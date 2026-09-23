@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { ChromaKeyOverlay } from "@/components/ChromaKeyOverlay";
 import { InstructionsModal } from "@/components/InstructionsModal";
+import { PartyEffect } from "@/components/PartyEffect";
 import { Leaderboard } from "@/components/Leaderboard";
 import { formatCLP } from "@/lib/format";
 import { getLeaderboards } from "@/lib/leaderboard";
@@ -51,7 +51,12 @@ export default async function HomePage({ searchParams }: Props) {
 
       <InstructionsModal abrirAlInicio={bienvenida === "1"} />
 
-      <ChromaKeyOverlay src="/videos/esqueleto.mp4" intervalMs={10000} />
+      {/* Para agregar otro efecto: pega el archivo en /public y suma otra línea aquí. */}
+      <PartyEffect
+        video="/videos/esqueleto.mp4"
+        sound="/audio/bad-to-the-bone.mp3"
+        intervalMs={10000}
+      />
 
       <form action={salir}>
         <button type="submit" className="link" style={{ background: "none", border: "none", cursor: "pointer", width: "100%" }}>
