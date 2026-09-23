@@ -429,3 +429,12 @@ p {
   max-width: 420px;
   margin: 0;
 }
+
+.chroma-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  pointer-events: none;
+  z-index: 40;
+}

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { ChromaKeyOverlay } from "@/components/ChromaKeyOverlay";
 import { InstructionsModal } from "@/components/InstructionsModal";
 import { Leaderboard } from "@/components/Leaderboard";
 import { formatCLP } from "@/lib/format";
@@ -49,6 +50,8 @@ export default async function HomePage({ searchParams }: Props) {
       </div>
 
       <InstructionsModal abrirAlInicio={bienvenida === "1"} />
+
+      <ChromaKeyOverlay src="/videos/esqueleto.mp4" intervalMs={10000} />
 
       <form action={salir}>
         <button type="submit" className="link" style={{ background: "none", border: "none", cursor: "pointer", width: "100%" }}>
