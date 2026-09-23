@@ -6,7 +6,6 @@ import { Leaderboard } from "@/components/Leaderboard";
 import { formatCLP } from "@/lib/format";
 import { getLeaderboards } from "@/lib/leaderboard";
 import { getCurrentGuest, getGuestTotal } from "@/lib/session";
-import { salir } from "./actions";
 
 export const dynamic = "force-dynamic";
 
@@ -25,7 +24,7 @@ export default async function HomePage({ searchParams }: Props) {
   ]);
 
   return (
-    <>
+    <div className="pantalla-principal">
       <div className="card card--azul">
         <h1>Hola, {guest.name} 👋</h1>
         <p className="muted">Llevas gastado</p>
@@ -37,17 +36,23 @@ export default async function HomePage({ searchParams }: Props) {
       </Link>
 
       <div className="card card--rojo">
-        <Leaderboard
-          titulo="🍹 Top 3 Curaos"
-          entries={curaos}
-          vacioTexto="Nadie ha pedido tragos todavía."
-        />
-        <Leaderboard
-          titulo="🍗 Top 3 Watones"
-          entries={watones}
-          vacioTexto="Nadie ha pedido comida todavía."
-        />
+        <div className="ranking-columnas">
+          <Leaderboard
+            titulo="🍹 Top 3 Curaos"
+            entries={curaos}
+            vacioTexto="Nadie ha pedido tragos todavía."
+          />
+          <Leaderboard
+            titulo="🍗 Top 3 Watones"
+            entries={watones}
+            vacioTexto="Nadie ha pedido comida todavía."
+          />
+        </div>
       </div>
+
+      <Link href="/premios" className="btn btn--azul btn--compacto">
+        ⭐ Duro Puntos
+      </Link>
 
       <InstructionsModal abrirAlInicio={bienvenida === "1"} />
 
@@ -55,14 +60,8 @@ export default async function HomePage({ searchParams }: Props) {
       <PartyEffect
         video="/videos/esqueleto.mp4"
         sound="/audio/bad-to-the-bone.mp3"
-        intervalMs={200000}
+        intervalMs={300000}
       />
-
-      <form action={salir}>
-        <button type="submit" className="link" style={{ background: "none", border: "none", cursor: "pointer", width: "100%" }}>
-          Cambiar de invitado
-        </button>
-      </form>
-    </>
+    </div>
   );
 }

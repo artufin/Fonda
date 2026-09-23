@@ -33,12 +33,14 @@ body {
 .header {
   background: var(--azul);
   color: var(--blanco);
-  padding: 14px 16px;
-  text-align: center;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
   font-weight: 800;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   letter-spacing: 0.5px;
   border-bottom: 6px solid var(--rojo);
+  flex-shrink: 0;
 }
 
 .header a {
@@ -46,8 +48,39 @@ body {
   text-decoration: none;
 }
 
+.header__titulo {
+  flex: 1;
+  text-align: center;
+  min-width: 0;
+}
+
+.header__espaciador {
+  width: 36px;
+  flex-shrink: 0;
+}
+
+.header__salir {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.header__salir:hover,
+.header__salir:active {
+  color: var(--blanco);
+  background: rgba(255, 255, 255, 0.12);
+}
+
 .header .title {
-  margin-right: 6px;
+  margin-right: 0;
 }
 
 .main {
@@ -445,4 +478,39 @@ p {
   max-width: 60vw;
   height: auto;
   margin: 0 auto 8px;
+}
+
+.pantalla-principal {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.pantalla-principal .card {
+  padding: 16px 18px;
+}
+
+.pantalla-principal .total {
+  font-size: 2.2rem;
+  margin: 4px 0;
+}
+
+.ranking-columnas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.ranking-columnas .ranking-grupo {
+  margin-bottom: 0;
+}
+
+.ranking-columnas h2 {
+  font-size: 1.05rem;
+}
+
+.btn--compacto {
+  min-height: 52px;
+  font-size: 1.2rem;
 }

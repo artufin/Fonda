@@ -28,6 +28,13 @@ model Product {
   consumptions Consumption[]
 }
 
+model Prize {
+  id        String   @id @default(cuid())
+  name      String
+  price     Int // costo en Duro Puntos
+  createdAt DateTime @default(now())
+}
+
 model Consumption {
   id        String   @id @default(cuid())
   guestId   String
