@@ -32,7 +32,7 @@ export default async function ListoPage({ searchParams }: Props) {
       </div>
       <div className="stack" style={{ marginTop: 16 }}>
         <Link href="/escanear" className="btn btn--rojo">
-          📷 Escanear otro
+          📷 Dame más
         </Link>
         <Link href="/" className="btn btn--blanco">
           Volver al inicio

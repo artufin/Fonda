@@ -23,14 +23,14 @@ export default async function ConsumirPage({ params }: Props) {
 
   return (
     <div className="card card--rojo">
-      <p className="muted">Hola, {guest.name}</p>
-      <h1>¿Confirmas que quieres 1 {product.name}?</h1>
+      <p className="muted">{guest.name}</p>
+      <h1>¿Tay seguro watón? ¿Querí 1 {product.name}?</h1>
       <div className="precio">{formatCLP(product.price)}</div>
       <form action={confirmarConsumo} className="stack">
         <input type="hidden" name="productId" value={product.id} />
-        <SubmitButton pendingText="Anotando...">Sí, confirmar</SubmitButton>
+        <SubmitButton pendingText="Anotando...">Sí, dame la wea</SubmitButton>
         <Link href="/" className="btn btn--blanco">
-          No, cancelar
+          No, pifié
         </Link>
       </form>
     </div>

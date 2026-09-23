@@ -36,16 +36,15 @@ export default async function HomePage({ searchParams }: Props) {
       </Link>
 
       <div className="card card--rojo">
-        <h2>🏆 Ranking de la fiesta</h2>
-        <Leaderboard
-          titulo="🍗 Top 3 Watones"
-          entries={watones}
-          vacioTexto="Nadie ha pedido comida todavía."
-        />
         <Leaderboard
           titulo="🍹 Top 3 Curaos"
           entries={curaos}
           vacioTexto="Nadie ha pedido tragos todavía."
+        />
+        <Leaderboard
+          titulo="🍗 Top 3 Watones"
+          entries={watones}
+          vacioTexto="Nadie ha pedido comida todavía."
         />
       </div>
 
