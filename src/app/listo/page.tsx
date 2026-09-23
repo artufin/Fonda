@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { PlaySound } from "@/components/PlaySound";
 import { formatCLP } from "@/lib/format";
 import { prisma } from "@/lib/prisma";
 import { getCurrentGuest, getGuestTotal } from "@/lib/session";
@@ -22,7 +23,9 @@ export default async function ListoPage({ searchParams }: Props) {
 
   return (
     <div className="card card--azul">
-      <div className="check">🍻</div>
+      <PlaySound src="/audio/yippee.mp3" />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/images/gracias.webp" alt="" className="gracias-img" />
       <h1 style={{ textAlign: "center" }}>Listo{product ? `, ${product.name} anotado` : ""}.</h1>
       <p className="muted" style={{ textAlign: "center" }}>
         Llevas gastados

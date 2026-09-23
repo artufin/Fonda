@@ -438,3 +438,11 @@ p {
   pointer-events: none;
   z-index: 40;
 }
+
+.gracias-img {
+  display: block;
+  width: 200px;
+  max-width: 60vw;
+  height: auto;
+  margin: 0 auto 8px;
+}
