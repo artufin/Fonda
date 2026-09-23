@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { formatCLP } from "@/lib/format";
 import { getCurrentGuest, getGuestTotal } from "@/lib/session";
@@ -19,11 +20,15 @@ export default async function HomePage() {
         <div className="total">{formatCLP(total)}</div>
       </div>
 
+      <Link href="/escanear" className="btn btn--rojo">
+        📷 Escanear QR
+      </Link>
+
       <div className="card card--rojo">
         <h2>¿Cómo pedir?</h2>
         <p>
-          Escanea con la cámara de tu celular el QR del trago o comida que quieras. Se abrirá una
-          pantalla para confirmar.
+          Toca <strong>Escanear QR</strong> y apunta al QR del trago o comida que quieras. También
+          puedes escanearlo con la cámara normal del celular. Después confirmas y listo.
         </p>
       </div>
 

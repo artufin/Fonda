@@ -7,7 +7,7 @@ Stack: Next.js 15 (App Router, TypeScript), Prisma, PostgreSQL (Neon), Vercel.
 ## Flujo
 
 1. El invitado abre cualquier URL de la app. Si no tiene sesión se le pide solo su nombre (queda en una cookie `httpOnly`).
-2. Escanea un QR impreso que apunta a `https://<BASE_URL>/consumir/<productId>`.
+2. Escanea un QR impreso que apunta a `https://<BASE_URL>/consumir/<productId>`. Puede hacerlo con el botón **Escanear QR** dentro de la app (usa la cámara del navegador, decodifica con `jsqr`) o con la cámara nativa del celular.
 3. La página muestra nombre y precio y pide confirmación.
 4. Al confirmar se guarda el consumo y se muestra "Listo. Llevas $X gastados".
 5. `/admin` lista cada invitado con su total (sin login, solo protegido por no compartir la URL).

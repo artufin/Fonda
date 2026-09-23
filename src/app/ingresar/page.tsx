@@ -20,7 +20,7 @@ export default async function IngresarPage({ searchParams }: Props) {
   return (
     <div className="card card--rojo">
       <h1>¡Bienvenido a la fonda!</h1>
-      <p>Dinos tu nombre para anotar lo que consumas.</p>
+      <p>Ingresa tu nombre para anotar lo que consumas.</p>
       <form action={ingresar} className="stack">
         <input type="hidden" name="next" value={next} />
         <input

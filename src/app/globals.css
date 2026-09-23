@@ -251,3 +251,43 @@ p {
   color: var(--rojo);
   font-weight: 700;
 }
+
+.scanner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #000;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.scanner__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.scanner__marco {
+  position: absolute;
+  inset: 12%;
+  border: 4px solid var(--blanco);
+  border-radius: 20px;
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+
+.scanner__aviso {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  color: var(--blanco);
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: rgba(0, 57, 166, 0.85);
+}

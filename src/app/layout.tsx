@@ -3,7 +3,7 @@ import Link from "next/link";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "La Fonda",
+  title: "Fonda Doña Dani",
   description: "Registro de consumos de la fiesta",
 };
 

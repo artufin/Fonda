@@ -30,9 +30,14 @@ export default async function ListoPage({ searchParams }: Props) {
       <div className="total" style={{ textAlign: "center" }}>
         {formatCLP(total)}
       </div>
-      <Link href="/" className="btn btn--azul" style={{ marginTop: 16 }}>
-        Volver al inicio
-      </Link>
+      <div className="stack" style={{ marginTop: 16 }}>
+        <Link href="/escanear" className="btn btn--rojo">
+          📷 Escanear otro
+        </Link>
+        <Link href="/" className="btn btn--blanco">
+          Volver al inicio
+        </Link>
+      </div>
     </div>
   );
 }
