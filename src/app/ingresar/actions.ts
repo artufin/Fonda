@@ -2,7 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
-import { safeNext, setGuestCookie } from "@/lib/session";
+import { safeNext, setGuestCookie, withParam } from "@/lib/session";
 
 export async function ingresar(formData: FormData) {
   const guestId = String(formData.get("guestId") ?? "");
@@ -14,5 +14,7 @@ export async function ingresar(formData: FormData) {
   }
 
   await setGuestCookie(guest.id);
-  redirect(next);
+  // El parámetro "bienvenida" hace que el inicio abra el modal de instrucciones
+  // solo esta vez; la propia página lo limpia de la URL apenas lo usa.
+  redirect(withParam(next, "bienvenida", "1"));
 }

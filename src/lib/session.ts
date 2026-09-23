@@ -44,3 +44,11 @@ export function safeNext(next: unknown, fallback = "/") {
   if (!next.startsWith("/") || next.startsWith("//")) return fallback;
   return next;
 }
+
+/** Agrega (o reemplaza) un parámetro de query a un path interno ya validado. */
+export function withParam(path: string, key: string, value: string) {
+  const [base, query] = path.split("?");
+  const params = new URLSearchParams(query);
+  params.set(key, value);
+  return `${base}?${params.toString()}`;
+}

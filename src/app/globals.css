@@ -412,3 +412,20 @@ p {
   font-size: 1rem;
   margin: 0;
 }
+
+.modal-fondo {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 26, 46, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 50;
+}
+
+.modal-caja {
+  width: 100%;
+  max-width: 420px;
+  margin: 0;
+}

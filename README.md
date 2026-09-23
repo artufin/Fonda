@@ -7,7 +7,7 @@ Stack: Next.js 15 (App Router, TypeScript), Prisma, PostgreSQL (Neon), Vercel.
 ## Flujo
 
 1. Antes de la fiesta, el anfitrión entra a `/admin` y agrega el nombre de cada invitado (sección **Agregar invitado**).
-2. Cada invitado abre cualquier URL de la app. Si no tiene sesión, ve la lista de nombres registrados y toca el suyo (sin escribir nada, sin contraseña). Queda guardado en una cookie `httpOnly`.
+2. Cada invitado abre cualquier URL de la app. Si no tiene sesión, ve la lista de nombres registrados y toca el suyo (sin escribir nada, sin contraseña). Queda guardado en una cookie `httpOnly`. Justo después de entrar por primera vez se abre un modal con las instrucciones de cómo pedir, que no vuelve a aparecer en visitas posteriores al inicio.
 3. Escanea un QR impreso que apunta a `https://<BASE_URL>/consumir/<productId>`. Puede hacerlo con el botón **Escanear QR** dentro de la app (usa la cámara del navegador, decodifica con `jsqr`) o con la cámara nativa del celular.
 4. La página muestra nombre y precio y pide confirmación.
 5. Al confirmar se guarda el consumo y se muestra "Listo. Llevas $X gastados".
