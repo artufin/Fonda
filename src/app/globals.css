@@ -373,3 +373,42 @@ p {
   font-size: 1rem;
   margin: 0;
 }
+
+.ranking-grupo {
+  margin-bottom: 20px;
+}
+
+.ranking-grupo:last-child {
+  margin-bottom: 0;
+}
+
+.ranking {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ranking li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 8px 4px;
+}
+
+.ranking .medalla {
+  font-size: 1.5rem;
+  width: 30px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.ranking-vacio {
+  color: var(--gris);
+  font-size: 1rem;
+  margin: 0;
+}

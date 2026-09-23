@@ -7,6 +7,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum ProductCategory {
+  COMIDA
+  TRAGO
+}
+
 model Guest {
   id           String        @id @default(cuid())
   name         String
@@ -15,10 +20,11 @@ model Guest {
 }
 
 model Product {
-  id           String        @id @default(cuid())
+  id           String          @id @default(cuid())
   name         String
   price        Int
-  createdAt    DateTime      @default(now())
+  category     ProductCategory @default(COMIDA)
+  createdAt    DateTime        @default(now())
   consumptions Consumption[]
 }
 

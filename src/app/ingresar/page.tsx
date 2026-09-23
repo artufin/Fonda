@@ -24,7 +24,7 @@ export default async function IngresarPage({ searchParams }: Props) {
 
   return (
     <div className="card card--rojo">
-      <h1>¡Bienvenido a la fonda!</h1>
+      <h1>¡Bienvenid@!</h1>
       <p>Busca tu nombre en la lista para anotar lo que consumas.</p>
 
       {params.error && (

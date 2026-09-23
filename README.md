@@ -13,6 +13,15 @@ Stack: Next.js 15 (App Router, TypeScript), Prisma, PostgreSQL (Neon), Vercel.
 5. Al confirmar se guarda el consumo y se muestra "Listo. Llevas $X gastados".
 6. `/admin` lista cada invitado con su total, y permite eliminar a un invitado (borra también todos sus consumos) con el botón ✕. Sin login, solo protegido por no compartir la URL.
 
+## Ranking de la fiesta
+
+La pantalla de inicio muestra dos tablas de posiciones, calculadas en vivo según el gasto de cada invitado (no la cantidad de ítems):
+
+- **🍗 Top 3 Watones**: quienes más han gastado en productos de categoría `COMIDA`.
+- **🍹 Top 3 Curaos**: quienes más han gastado en productos de categoría `TRAGO`.
+
+Solo se muestran el puesto (medalla) y el nombre, nunca el monto. Un invitado sin consumos en esa categoría no aparece en el ranking. Se calcula en [src/lib/leaderboard.ts](src/lib/leaderboard.ts).
+
 ## Correr localmente
 
 ```bash
@@ -50,16 +59,18 @@ npm run seed      # carga/actualiza los 6 productos
 
 El seed hace `upsert` por id, así que puedes correrlo varias veces sin duplicar. Para cambiar nombres o precios edita [prisma/seed.ts](prisma/seed.ts) y vuelve a correrlo.
 
-Productos precargados:
+Productos precargados. La categoría determina en qué ranking del inicio cuenta cada consumo (ver [Ranking de la fiesta](#ranking-de-la-fiesta)):
 
-| id            | Nombre      | Precio |
-|---------------|-------------|--------|
-| `terremoto`   | Terremoto   | $950   |
-| `piscola`     | Piscola     | $450   |
-| `michelada`   | Michelada   | $400   |
-| `carne`       | Carne       | $700   |
-| `choripan`    | Choripán    | $200   |
-| `sopaipillas` | Sopaipillas | $300   |
+| id            | Nombre      | Precio | Categoría |
+|---------------|-------------|--------|-----------|
+| `terremoto`   | Terremoto   | $950   | TRAGO     |
+| `piscola`     | Piscola     | $450   | TRAGO     |
+| `michelada`   | Michelada   | $400   | TRAGO     |
+| `carne`       | Carne       | $700   | COMIDA    |
+| `choripan`    | Choripán    | $200   | COMIDA    |
+| `sopaipilla`  | Sopaipilla  | $300   | COMIDA    |
+
+Si cambias el esquema de Prisma (por ejemplo, este proyecto agregó la columna `category`), corre `npm run db:push` de nuevo antes de `npm run seed` para que la base tenga la columna nueva.
 
 ## Generar los QR (cuando ya tengas la URL definitiva)
 

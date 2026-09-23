@@ -49,7 +49,7 @@ export function GuestPicker({ guests, next }: Props) {
         type="text"
         inputMode="text"
         autoComplete="off"
-        placeholder="Escribe o busca tu nombre..."
+        placeholder="Escribe para buscar"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         onKeyDown={(e) => {
@@ -64,7 +64,7 @@ export function GuestPicker({ guests, next }: Props) {
       <div className="combo__lista">
         {filtrados.length === 0 ? (
           <p className="combo__vacio">
-            No encontramos ese nombre. Pide al anfitrión que te agregue en /admin.
+            No está ese nombre. Pregúntale a Arturo que wea.
           </p>
         ) : (
           filtrados.map((g) => (
