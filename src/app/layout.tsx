@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <header className="header">
           <Link href="/">
-            <span className="title">Fonda Doña Dani</span>
+            <span className="title">🇨🇱 Fonda Doña Dani 🇨🇱</span>
           </Link>
         </header>
         <main className="main">{children}</main>

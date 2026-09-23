@@ -9,7 +9,7 @@ const products = [
   { id: "michelada", name: "Michelada", price: 400 },
   { id: "carne", name: "Carne", price: 700 },
   { id: "choripan", name: "Choripán", price: 200 },
-  { id: "sopaipillas", name: "Sopaipillas", price: 300 },
+  { id: "sopaipilla", name: "Sopaipilla", price: 300 },
 ];
 
 async function main() {

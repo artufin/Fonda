@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { getCurrentGuest, safeNext } from "@/lib/session";
 import { prisma } from "@/lib/prisma";
-import { ingresar } from "./actions";
+import { GuestPicker } from "./GuestPicker";
 
 export const dynamic = "force-dynamic";
 
@@ -17,15 +17,18 @@ export default async function IngresarPage({ searchParams }: Props) {
   const guest = await getCurrentGuest();
   if (guest) redirect(next);
 
-  const guests = await prisma.guest.findMany({ orderBy: { name: "asc" } });
+  const guests = await prisma.guest.findMany({
+    orderBy: { name: "asc" },
+    select: { id: true, name: true },
+  });
 
   return (
     <div className="card card--rojo">
       <h1>¡Bienvenido a la fonda!</h1>
-      <p>Elige tu nombre de la lista para anotar lo que consumas.</p>
+      <p>Busca tu nombre en la lista para anotar lo que consumas.</p>
 
       {params.error && (
-        <p className="error">Ese invitado ya no existe. Elige otro de la lista.</p>
+        <p className="error">Ese invitado ya no existe. Búscalo de nuevo en la lista.</p>
       )}
 
       {guests.length === 0 ? (
@@ -33,17 +36,7 @@ export default async function IngresarPage({ searchParams }: Props) {
           Todavía no hay invitados registrados. Pide al anfitrión que te agregue en /admin.
         </p>
       ) : (
-        <div className="stack">
-          {guests.map((g) => (
-            <form key={g.id} action={ingresar}>
-              <input type="hidden" name="guestId" value={g.id} />
-              <input type="hidden" name="next" value={next} />
-              <button type="submit" className="btn btn--blanco">
-                {g.name}
-              </button>
-            </form>
-          ))}
-        </div>
+        <GuestPicker guests={guests} next={next} />
       )}
     </div>
   );
