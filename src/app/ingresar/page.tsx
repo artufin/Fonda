@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
-import { SubmitButton } from "@/components/SubmitButton";
 import { getCurrentGuest, safeNext } from "@/lib/session";
+import { prisma } from "@/lib/prisma";
 import { ingresar } from "./actions";
 
 export const dynamic = "force-dynamic";
@@ -13,30 +13,38 @@ export default async function IngresarPage({ searchParams }: Props) {
   const params = await searchParams;
   const next = safeNext(params.next);
 
-  // Si ya tiene sesión válida, no hace falta pedir el nombre de nuevo.
+  // Si ya tiene sesión válida, no hace falta elegir de nuevo.
   const guest = await getCurrentGuest();
   if (guest) redirect(next);
+
+  const guests = await prisma.guest.findMany({ orderBy: { name: "asc" } });
 
   return (
     <div className="card card--rojo">
       <h1>¡Bienvenido a la fonda!</h1>
-      <p>Ingresa tu nombre para anotar lo que consumas.</p>
-      <form action={ingresar} className="stack">
-        <input type="hidden" name="next" value={next} />
-        <input
-          className="input"
-          type="text"
-          name="name"
-          placeholder="Tu nombre"
-          autoComplete="name"
-          autoFocus
-          required
-          minLength={2}
-          maxLength={40}
-        />
-        {params.error && <p className="error">Escribe un nombre de al menos 2 letras.</p>}
-        <SubmitButton pendingText="Entrando...">Entrar</SubmitButton>
-      </form>
+      <p>Elige tu nombre de la lista para anotar lo que consumas.</p>
+
+      {params.error && (
+        <p className="error">Ese invitado ya no existe. Elige otro de la lista.</p>
+      )}
+
+      {guests.length === 0 ? (
+        <p className="error">
+          Todavía no hay invitados registrados. Pide al anfitrión que te agregue en /admin.
+        </p>
+      ) : (
+        <div className="stack">
+          {guests.map((g) => (
+            <form key={g.id} action={ingresar}>
+              <input type="hidden" name="guestId" value={g.id} />
+              <input type="hidden" name="next" value={next} />
+              <button type="submit" className="btn btn--blanco">
+                {g.name}
+              </button>
+            </form>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

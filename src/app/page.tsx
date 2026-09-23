@@ -34,7 +34,7 @@ export default async function HomePage() {
 
       <form action={salir}>
         <button type="submit" className="link" style={{ background: "none", border: "none", cursor: "pointer", width: "100%" }}>
-          No soy {guest.name}, cambiar nombre
+          Cambiar de invitado
         </button>
       </form>
     </>

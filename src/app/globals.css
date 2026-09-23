@@ -46,7 +46,7 @@ body {
   text-decoration: none;
 }
 
-.header .estrella {
+.header .title {
   margin-right: 6px;
 }
 
@@ -290,4 +290,31 @@ p {
   font-size: 1.1rem;
   font-weight: 700;
   background: rgba(0, 57, 166, 0.85);
+}
+
+.btn-x {
+  width: 36px;
+  height: 36px;
+  min-height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--rojo);
+  background: var(--blanco);
+  color: var(--rojo);
+  font-weight: 900;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-x:hover:not(:disabled) {
+  background: var(--rojo);
+  color: var(--blanco);
+}
+
+.btn-x:disabled {
+  opacity: 0.6;
+  cursor: wait;
 }

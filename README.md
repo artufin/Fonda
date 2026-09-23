@@ -1,16 +1,17 @@
 # La Fonda 🇨🇱
 
-App web para registrar consumo de tragos y comida en una fiesta. Cada invitado entra con su nombre, escanea el QR del producto con la cámara del celular, confirma, y al final de la noche `/admin` muestra cuánto debe cada uno.
+App web para registrar consumo de tragos y comida en una fiesta. El anfitrión pre-registra a los invitados desde `/admin`, cada invitado elige su nombre de una lista, escanea el QR del producto con la cámara del celular, confirma, y al final de la noche `/admin` muestra cuánto debe cada uno.
 
 Stack: Next.js 15 (App Router, TypeScript), Prisma, PostgreSQL (Neon), Vercel.
 
 ## Flujo
 
-1. El invitado abre cualquier URL de la app. Si no tiene sesión se le pide solo su nombre (queda en una cookie `httpOnly`).
-2. Escanea un QR impreso que apunta a `https://<BASE_URL>/consumir/<productId>`. Puede hacerlo con el botón **Escanear QR** dentro de la app (usa la cámara del navegador, decodifica con `jsqr`) o con la cámara nativa del celular.
-3. La página muestra nombre y precio y pide confirmación.
-4. Al confirmar se guarda el consumo y se muestra "Listo. Llevas $X gastados".
-5. `/admin` lista cada invitado con su total (sin login, solo protegido por no compartir la URL).
+1. Antes de la fiesta, el anfitrión entra a `/admin` y agrega el nombre de cada invitado (sección **Agregar invitado**).
+2. Cada invitado abre cualquier URL de la app. Si no tiene sesión, ve la lista de nombres registrados y toca el suyo (sin escribir nada, sin contraseña). Queda guardado en una cookie `httpOnly`.
+3. Escanea un QR impreso que apunta a `https://<BASE_URL>/consumir/<productId>`. Puede hacerlo con el botón **Escanear QR** dentro de la app (usa la cámara del navegador, decodifica con `jsqr`) o con la cámara nativa del celular.
+4. La página muestra nombre y precio y pide confirmación.
+5. Al confirmar se guarda el consumo y se muestra "Listo. Llevas $X gastados".
+6. `/admin` lista cada invitado con su total, y permite eliminar a un invitado (borra también todos sus consumos) con el botón ✕. Sin login, solo protegido por no compartir la URL.
 
 ## Correr localmente
 
