@@ -55,7 +55,7 @@ export default async function HomePage({ searchParams }: Props) {
       <PartyEffect
         video="/videos/esqueleto.mp4"
         sound="/audio/bad-to-the-bone.mp3"
-        intervalMs={10000}
+        intervalMs={600000}
       />
 
       <form action={salir}>
