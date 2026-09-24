@@ -17,6 +17,7 @@ model Guest {
   name         String
   createdAt    DateTime      @default(now())
   consumptions Consumption[]
+  exchanges    Exchange[]
 }
 
 model Product {
@@ -29,10 +30,11 @@ model Product {
 }
 
 model Prize {
-  id        String   @id @default(cuid())
+  id        String     @id @default(cuid())
   name      String
   price     Int // costo en Duro Puntos
-  createdAt DateTime @default(now())
+  createdAt DateTime   @default(now())
+  exchanges Exchange[]
 }
 
 model Consumption {
@@ -45,4 +47,20 @@ model Consumption {
 
   @@index([guestId])
   @@index([productId])
+}
+
+// Registro de qué invitado canjeó qué premio. Los Duro Puntos disponibles se
+// calculan siempre desde acá (ganados por consumo menos gastados en canjes),
+// nunca como un contador guardado: así un canje nunca se "revierte" solo
+// porque después se registre otra compra.
+model Exchange {
+  id        String   @id @default(cuid())
+  guestId   String
+  prizeId   String
+  createdAt DateTime @default(now())
+  guest     Guest    @relation(fields: [guestId], references: [id], onDelete: Cascade)
+  prize     Prize    @relation(fields: [prizeId], references: [id], onDelete: Cascade)
+
+  @@index([guestId])
+  @@index([prizeId])
 }

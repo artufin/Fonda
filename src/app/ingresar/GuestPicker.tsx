@@ -113,8 +113,8 @@ export function GuestPicker({ guests, next }: Props) {
             aria-labelledby="editar-titulo"
             onClick={(e) => e.stopPropagation()}
           >
-            <h2 id="editar-titulo">¿Tu nombre está bien escrito?</h2>
-            <p className="muted">Puedes corregirlo antes de entrar.</p>
+            <h2 id="editar-titulo">Si quieres, ponte un apodo</h2>
+            <p className="muted">o no. Has la wea que querai</p>
             <input
               className="input"
               type="text"

@@ -39,7 +39,7 @@ export function InstructionsModal({ abrirAlInicio }: Props) {
         aria-labelledby="modal-titulo"
         onClick={(e) => e.stopPropagation()}
       >
-        <h2 id="modal-titulo">¿Cómo pedir?</h2>
+        <h2 id="modal-titulo">¿Cómo anotarse?</h2>
         <p>
           Toca <strong>Escanear QR</strong> y apunta al QR del trago o comida que quieras. También
           puedes escanearlo con la cámara normal del celular. Después confirmas y listo.

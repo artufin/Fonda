@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
-import { getCurrentGuest, getGuestTotal } from "@/lib/session";
+import { getCurrentGuest, getGuestPoints } from "@/lib/session";
 
 export const dynamic = "force-dynamic";
 
@@ -9,10 +9,8 @@ export default async function PremiosPage() {
   const guest = await getCurrentGuest();
   if (!guest) redirect("/ingresar");
 
-  // Por ahora los Duro Puntos son el mismo total gastado, solo que se pueden
-  // canjear por premios en vez de sumar la cuenta a pagar.
   const [duroPuntos, premios] = await Promise.all([
-    getGuestTotal(guest.id),
+    getGuestPoints(guest.id),
     prisma.prize.findMany({ orderBy: { price: "asc" } }),
   ]);
 
